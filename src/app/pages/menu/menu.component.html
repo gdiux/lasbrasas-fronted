@@ -1,0 +1,47 @@
+<app-breadcrums></app-breadcrums>
+<!-- Items grid-->
+<section class="container py-4 py-sm-5">
+
+    <div class="row pt-3 pt-sm-0">
+
+        <!-- DEPARTAMENTOS -->
+        <!-- <div class="col-md-4 col-sm-6 mb-grid-gutter" *ngFor="let departamento of departamentos">
+            <a class="card product-card h-100 border-0 shadow pb-2" [routerLink]="['/menu', departamento.name, departamento.did]">
+
+                <div style="filter: blur(2px); ">
+                    <img class="card-img-top" [src]="departamento.img! | imagen: 'department'" alt="McDonald's">
+                </div>
+
+                <div class="bg-white rounded-3 pt-1 px-2 mx-auto mt-n5" style="width: 175px; z-index: 50;">
+                    <img class="d-block rounded-3 mx-auto" [src]="departamento.img! | imagen: 'department'" width="150" alt="Brand">
+                </div>
+
+                <div class="card-body text-center pt-3 pb-4">
+
+                    <h3 class="h5 mb-2"> {{ departamento.name }} </h3>
+
+                </div>
+            </a>
+        </div> -->
+
+        <ng-container *ngFor="let departamento of departamentos">
+
+            <div *ngIf="departamento.name !== 'DOMICILIOS' && departamento.name !== 'ADICIONALES' && departamento.name !== 'HELADERIA' " class="col-md-4 col-sm-6 mb-grid-gutter">
+                <a class="card product-card h-100 border-0 shadow pb-2" [routerLink]="['/menu', departamento.name, departamento.did]">
+
+                    <div>
+                        <img class="card-img-top" [src]="departamento.img! | imagen: 'department'" alt="McDonald's">
+                    </div>
+
+                    <div class="card-body text-center pt-3 pb-4">
+                        <h3 class="h5 mb-2"> {{ departamento.name }} </h3>
+                    </div>
+                </a>
+            </div>
+        </ng-container>
+
+
+        <!-- DEPARTAMENTOS -->
+
+    </div>
+</section>
