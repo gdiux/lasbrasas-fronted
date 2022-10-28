@@ -14,7 +14,7 @@
 
 export const environment = {
   production: false,
-  base_url: 'http://localhost:3000/api',
+  base_url: 'http://147.182.198.181:3500/api',
   server_url: 'https://lasbrasas.litecoriente.com/api'
 };
 
