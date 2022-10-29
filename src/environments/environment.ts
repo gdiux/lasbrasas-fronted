@@ -4,7 +4,7 @@
 
 /**
  
-  base_url: 'https://lasbrasas.com/api',
+  base_url: 'http://lasbrasas.ddns.net/api',
   local_url: 'http://lasbrasas.ddns.net',
   server_url: 'https://lasbrasas.litecoriente.com/api'
 
@@ -16,7 +16,7 @@
 
 export const environment = {
   production: false,
-  base_url: 'https://lasbrasas.com/api',
+  base_url: 'http://lasbrasas.ddns.net/api',
   local_url: 'http://lasbrasas.ddns.net',
   server_url: 'https://lasbrasas.litecoriente.com/api'
 };
