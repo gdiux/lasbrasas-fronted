@@ -5,16 +5,19 @@
 /**
  
   base_url: 'https://lasbrasas.com/api',
+  local_url: 'http://lasbrasas.ddns.net',
   server_url: 'https://lasbrasas.litecoriente.com/api'
 
-  base_url: 'http://localhost:3000/api',
+  base_url: 'http://localhost:3500/api',
+  local_url: 'http://localhost:4200',
   local_url: 'https://lasbrasas.litecoriente.com'
 
 */
 
 export const environment = {
   production: false,
-  base_url: 'http://147.182.198.181:3500/api',
+  base_url: 'https://lasbrasas.com/api',
+  local_url: 'http://lasbrasas.ddns.net',
   server_url: 'https://lasbrasas.litecoriente.com/api'
 };
 

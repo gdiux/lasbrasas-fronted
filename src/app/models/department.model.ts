@@ -11,7 +11,8 @@ export class Department{
         public img?: string,
         public did?:string,
         public _id?:string,
-        public qty?: number
+        public qty?: number,
+        public pic?: string
     ){}
 
     /** ================================================================
