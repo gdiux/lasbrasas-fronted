@@ -10,6 +10,7 @@ import { ReservacionComponent } from './reservacion/reservacion.component';
 import { DomicilioComponent } from './domicilio/domicilio.component';
 import { BreadcrumsComponent } from '../shared/breadcrums/breadcrums.component';
 import { ProductosComponent } from './productos/productos.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -25,7 +26,9 @@ import { ProductosComponent } from './productos/productos.component';
   imports: [
     CommonModule,
     RouterModule,
-    PipesModule
+    PipesModule,
+    FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class PagesModule { }

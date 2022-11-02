@@ -10,14 +10,14 @@
 
   base_url: 'http://localhost:3500/api',
   local_url: 'http://localhost:4200',
-  local_url: 'https://lasbrasas.litecoriente.com'
+  server_url: 'https://lasbrasas.litecoriente.com/api'
 
 */
 
 export const environment = {
   production: false,
-  base_url: 'http://lasbrasas.ddns.net/api',
-  local_url: 'http://lasbrasas.ddns.net',
+  base_url: 'http://localhost:3500/api',
+  local_url: 'http://localhost:4200',
   server_url: 'https://lasbrasas.litecoriente.com/api'
 };
 

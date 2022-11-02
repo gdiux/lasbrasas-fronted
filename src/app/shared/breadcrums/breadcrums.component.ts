@@ -10,7 +10,7 @@ import { filter, map } from 'rxjs';
 })
 export class BreadcrumsComponent implements OnInit {
 
-  public page!: string;
+  public page: string = '';
 
   constructor(  private router: Router) { 
 
@@ -25,7 +25,7 @@ export class BreadcrumsComponent implements OnInit {
           this.page = data.titulo;
           document.title = `${data.titulo} - Las Brasas Parrilla & Sazón`;
         
-        }); 
+        });
 
   }
 

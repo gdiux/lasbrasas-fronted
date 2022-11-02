@@ -1,1 +1,123 @@
-<p>reservacion works!</p>
+<app-breadcrums></app-breadcrums>
+
+<div class="container pb-5 mb-2 mb-md-4">
+    <section class="col-lg-8 mx-auto">
+
+        <!-- BTN ATRAS Y ADELANTE -->
+        <ul class="nav nav-tabs media-tabs nav-justified mt-4" role="tablist">
+
+            <li class="col-4 nav-item">
+                <a class="nav-link active" href="#reserva" data-bs-toggle="tab" role="tab">
+                    <div class="d-flex align-items-center flex-wrap">
+                        <div class="media-tab-media"><i class="ci-time"></i></div>
+                        <div class="ps-md-3">
+                            <div class="media-tab-subtitle text-muted fs-xs mb-1">Pimer Paso</div>
+                            <h6 class="media-tab-title text-nowrap mb-0">Reserva</h6>
+                        </div>
+                    </div>
+                </a>
+            </li>
+
+            <li class="col-4 nav-item ms-auto">
+                <a class="nav-link" href="#informacion" data-bs-toggle="tab" role="tab">
+                    <div class="d-flex align-items-center flex-wrap">
+                        <div class="media-tab-media"><i class="ci-user-circle"></i></div>
+                        <div class="ps-md-3">
+                            <div class="media-tab-subtitle text-muted fs-xs mb-1">Segundo Paso</div>
+                            <h6 class="media-tab-title text-nowrap mb-0">Información</h6>
+                        </div>
+                    </div>
+                </a>
+            </li>
+
+            <li class="col-4 nav-item">
+                <a class="nav-link" href="#confirmacion" data-bs-toggle="tab" role="tab">
+                    <div class="d-flex align-items-center flex-wrap">
+                        <div class="media-tab-media"><i class="ci-check-circle"></i></div>
+                        <div class="ps-md-3">
+                            <div class="media-tab-subtitle text-muted fs-xs mb-1">Tercer Paso</div>
+                            <h6 class="media-tab-title text-nowrap mb-0">Confirmación</h6>
+                        </div>
+                    </div>
+                </a>
+            </li>
+        </ul>
+        <!-- BTN ATRAS Y ADELANTE -->
+
+        <form [formGroup]="reservaForm" (ngSubmit)="crearReserva()">
+
+            <div class="tab-content">
+
+                <!-- RESERVA -->
+                <div class="tab-pane fade show active" id="reserva" role="tabpanel">
+
+                    <div class="col-md-6 mx-auto mb-3">
+                        <label for="qty" class="form-label">Reservación para cuantas personas</label>
+                        <input formControlName="qty" min="1" class="form-control border-0 border-bottom" type="number" id="qty" placeholder="1" style="height: 100px; font-size:80px; text-align: center;">
+                        <div class="text-danger" *ngIf="validar('qty')">Campo Obligatorio</div>
+                    </div>
+
+                    <div class="col-md-6 mt-4 mx-auto mb-3">
+                        <label for="date" class="form-label">Selecciona la fecha de la reserva</label>
+                        <input formControlName="fecha" class="form-control" type="datetime-local" id="date">
+                        <div class="text-danger" *ngIf="validar('fecha')">Campo Obligatorio</div>
+                    </div>
+
+                </div>
+                <!-- RESERVA -->
+
+                <!-- INFORMACIÓN -->
+                <div class="tab-pane fade" id="informacion" role="tabpanel">
+
+
+
+                </div>
+                <!-- INFORMACIÓN -->
+
+                <!-- CONFIRMACION -->
+                <div class="tab-pane fade" id="confirmacion" role="tabpanel">
+                    <p class="fs-sm">confirmacion Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore
+                        carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester
+                        cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+
+                    <button type="submit" class="btn btn-outline-primary">Crear Reserva</button>
+
+                </div>
+                <!-- CONFIRMACION -->
+
+            </div>
+
+        </form>
+
+    </section>
+
+    <!-- VALIDACIONES -->
+    <div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 5px;">
+        <!-- Position it -->
+        <div style="position: absolute; top: 0; right: 0;">
+
+            <div id="qtyM" class="toast fade mb-2" [ngClass]="{'show': validar('qty')}" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header border-0 text-white bg-danger">
+                    <i class="ci-warning me-2"></i>
+                    <span class="fw-medium me-auto">Cantidad Obligatoria</span>
+                    <button type="button" class="btn-close btn-close-white ms-2" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body text-danger">Volver a reserva...</div>
+            </div>
+
+            <div id="fechaM" class="toast fade mb-2" [ngClass]="{'show': validar('fecha')}" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header border-0 text-white bg-danger">
+                    <i class="ci-warning me-2"></i>
+                    <span class="fw-medium me-auto">Fecha Obligatoria</span>
+                    <button type="button" class="btn-close btn-close-white ms-2" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body text-danger">Volver a reserva...</div>
+            </div>
+
+
+        </div>
+
+    </div>
+    <!-- VALIDACIONES -->
+
+</div>
