@@ -1,5 +1,6 @@
 <app-breadcrums></app-breadcrums>
 
+
 <div class="container pb-5 mb-2 mb-md-4">
     <section class="col-lg-8 mx-auto">
 
@@ -51,16 +52,23 @@
                 <!-- RESERVA -->
                 <div class="tab-pane fade show active" id="reserva" role="tabpanel">
 
-                    <div class="col-md-6 mx-auto mb-3">
-                        <label for="qty" class="form-label">Reservación para cuantas personas</label>
-                        <input formControlName="qty" min="1" class="form-control border-0 border-bottom" type="number" id="qty" placeholder="1" style="height: 100px; font-size:80px; text-align: center;">
-                        <div class="text-danger" *ngIf="validar('qty')">Campo Obligatorio</div>
-                    </div>
+                    <div class="card border-0 shadow mb-4">
+                        <div class="card-body">
 
-                    <div class="col-md-6 mt-4 mx-auto mb-3">
-                        <label for="date" class="form-label">Selecciona la fecha de la reserva</label>
-                        <input formControlName="fecha" class="form-control" type="datetime-local" id="date">
-                        <div class="text-danger" *ngIf="validar('fecha')">Campo Obligatorio</div>
+
+                            <div class="col-md-6 mx-auto mb-3">
+                                <label for="qty" class="form-label">Reservación para cuantas personas</label>
+                                <input formControlName="qty" min="1" class="form-control border-0 border-bottom" type="number" id="qty" placeholder="0" style="height: 100px; font-size:80px; text-align: center;">
+                                <div class="text-danger animated fadeIn " *ngIf="validar('qty')">Debes de seleccionar una cantidad valida</div>
+                            </div>
+
+                            <div class="col-md-6 mt-4 mx-auto mb-3">
+                                <label for="date" class="form-label">Selecciona la fecha de la reserva</label>
+                                <input formControlName="fecha" class="form-control" type="datetime-local" id="date">
+                                <div class="text-danger animated fadeIn " *ngIf="validar('fecha')">La fecha es obligatoria</div>
+                            </div>
+
+                        </div>
                     </div>
 
                 </div>
@@ -69,18 +77,111 @@
                 <!-- INFORMACIÓN -->
                 <div class="tab-pane fade" id="informacion" role="tabpanel">
 
+                    <div class="card border-0 shadow mb-4">
+                        <div class="card-body">
 
+
+                            <small class="text-danger animated fadeIn " *ngIf="validar('name')">El nombre es obligatorio</small>
+                            <div class="form-floating mb-3">
+                                <input formControlName="name" class="form-control" type="text" id="name" placeholder="Nombres">
+                                <label for="fl-text">Nombres</label>
+                            </div>
+
+                            <small class="text-danger animated fadeIn " *ngIf="validar('phone')">El telefono es obligatorio </small>
+                            <div class="form-floating mb-3">
+                                <input formControlName="phone" class="form-control" type="text" id="phone" placeholder="Telefono">
+                                <label for="phone">Telefono</label>
+                            </div>
+
+                            <small class="text-danger animated fadeIn " *ngIf="validar('email')">El correo es obligatorio</small>
+                            <div class="form-floating mb-3">
+                                <input formControlName="email" class="form-control" type="text" id="email" placeholder="Correo Electronico">
+                                <label for="email">Correo Electronico</label>
+                            </div>
+
+                        </div>
+                    </div>
 
                 </div>
                 <!-- INFORMACIÓN -->
 
                 <!-- CONFIRMACION -->
                 <div class="tab-pane fade" id="confirmacion" role="tabpanel">
-                    <p class="fs-sm">confirmacion Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore
-                        carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester
-                        cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
 
-                    <button type="submit" class="btn btn-outline-primary">Crear Reserva</button>
+                    <!-- INFORMACION DE LA RESERVA -->
+                    <div class="card border-0 shadow mb-4">
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-0">
+                                <li class="d-flex pb-3 border-bottom">
+                                    <i class="ci-add-user fs-lg mt-2 mb-0 text-primary"></i>
+                                    <div class="ps-3">
+                                        <span class="fs-ms text-muted">Reserva para:</span>
+                                        <h4 class="d-block text-heading mb-0"> {{ reservaForm.value.qty || 0 }} </h4>
+                                        <small class="text-danger animated fadeIn " *ngIf="validar('qty')">Campo obligatorio</small>
+                                    </div>
+                                </li>
+                                <li class="d-flex pt-2 pb-3 border-bottom">
+                                    <i class="ci-time fs-lg mt-2 mb-0 text-primary"></i>
+                                    <div class="ps-3">
+                                        <span class="fs-ms text-muted">Fecha:</span>
+                                        <h4 class="d-block text-heading mb-0"> {{ reservaForm.value.fecha || '10/10/2000' | date: 'medium' }} </h4>
+                                        <small class="text-danger animated fadeIn " *ngIf="validar('fecha')">Campo obligatorio</small>
+                                    </div>
+                                </li>
+                                <li class="d-flex pt-2m pb-3 border-bottom">
+                                    <i class="ci-user-circle fs-lg mt-2 mb-0 text-primary"></i>
+                                    <div class="ps-3">
+                                        <span class="fs-ms text-muted">Datos de la persona:</span>
+                                        <h4 class="d-block text-heading mb-0 fs-sm"> {{ reservaForm.value.name || '-------'}} </h4>
+                                        <h4 class="d-block text-heading mb-0 fs-sm"> {{ reservaForm.value.phone || '-------'}} </h4>
+                                        <h4 class="d-block text-heading mb-0 fs-sm"> {{ reservaForm.value.email || '-------'}} </h4>
+                                        <small class="text-danger animated fadeIn " *ngIf="validar('name') || validar('phone') || validar('email')">Campos obligatorios</small>
+                                    </div>
+                                </li>
+
+                                <li class="d-flex pt-2m">
+                                    <i class="ci-gift fs-lg mt-2 mb-0 text-primary"></i>
+                                    <div class="ps-3">
+                                        <div class="form-check form-switch mb-2">
+                                            <input formControlName="decoration" type="checkbox" class="form-check-input" id="customSwitch1" #decora>
+                                            <label class="form-check-label" for="customSwitch1"> Decoración</label>
+                                        </div>
+
+                                        <div *ngIf="decora.checked">
+                                            <p class="text-info text-break fs-sm"><strong>Nota:</strong> La decoración tiene un costo adicional, el cual debe ser cancelado antes del dia de la reservación, te contactaremos despues de que termines de crear la reservación</p>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul>
+
+
+
+                        </div>
+                    </div>
+                    <!-- INFORMACION DE LA RESERVA -->
+
+                    <!-- COMENTARIO -->
+                    <div class="card border-0 shadow mb-4">
+                        <div class="card-body">
+                            <div class="form-floating mb-2">
+                                <textarea formControlName="comment" class="form-control" id="fl-textarea" style="height: 120px;" placeholder="Comentarios"></textarea>
+                                <label for="fl-textarea">Comentarios</label>
+                            </div>
+
+                            <div class="mb-4">
+                                <p class="text-muted text-break fs-sm">
+                                    <strong>Nota:</strong> Todas las reservas realizadas para
+                                    <strong>Las Brasas Parrilla & Sanzón</strong>, se realizan sin ningun cargo adicional por este servicio. La reserva se matendra activa durante 30 minutos pasada la hora de la reserva, de lo contrario se liberara el
+                                    espacio reservado.</p>
+                                <p class="text-muted text-break fs-sm">Si cree que vas a necesitar mas tiempo para asistir a la reservación, debera contactarnos...</p>
+                            </div>
+
+                            <button type="submit" [disabled]="btn" class="btn btn-outline-primary w-100 ms-auto">Crear Reserva</button>
+                        </div>
+                    </div>
+                    <!-- COMENTARIO -->
+
 
                 </div>
                 <!-- CONFIRMACION -->
@@ -91,33 +192,6 @@
 
     </section>
 
-    <!-- VALIDACIONES -->
-    <div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 5px;">
-        <!-- Position it -->
-        <div style="position: absolute; top: 0; right: 0;">
 
-            <div id="qtyM" class="toast fade mb-2" [ngClass]="{'show': validar('qty')}" role="alert" aria-live="assertive" aria-atomic="true">
-                <div class="toast-header border-0 text-white bg-danger">
-                    <i class="ci-warning me-2"></i>
-                    <span class="fw-medium me-auto">Cantidad Obligatoria</span>
-                    <button type="button" class="btn-close btn-close-white ms-2" data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
-                <div class="toast-body text-danger">Volver a reserva...</div>
-            </div>
-
-            <div id="fechaM" class="toast fade mb-2" [ngClass]="{'show': validar('fecha')}" role="alert" aria-live="assertive" aria-atomic="true">
-                <div class="toast-header border-0 text-white bg-danger">
-                    <i class="ci-warning me-2"></i>
-                    <span class="fw-medium me-auto">Fecha Obligatoria</span>
-                    <button type="button" class="btn-close btn-close-white ms-2" data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
-                <div class="toast-body text-danger">Volver a reserva...</div>
-            </div>
-
-
-        </div>
-
-    </div>
-    <!-- VALIDACIONES -->
 
 </div>

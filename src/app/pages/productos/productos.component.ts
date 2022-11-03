@@ -39,7 +39,7 @@ export class ProductosComponent implements OnInit {
   }
 
   /** =====================================================================
-   *  GET DEPARTMENTS
+   *  GET PRODUCTOS
   =========================================================================*/
   public departamentos: Department[] = [];
   cargarDepartamentos(){
@@ -67,7 +67,6 @@ export class ProductosComponent implements OnInit {
     this.productosService.cargarProductoDepartamento(department)
         .subscribe( ({products}) => {
 
-          console.log(products);
           this.productos = products;
 
         }, (err) => {

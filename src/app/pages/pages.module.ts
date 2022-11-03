@@ -11,6 +11,7 @@ import { DomicilioComponent } from './domicilio/domicilio.component';
 import { BreadcrumsComponent } from '../shared/breadcrums/breadcrums.component';
 import { ProductosComponent } from './productos/productos.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReservaComponent } from './reserva/reserva.component';
 
 
 
@@ -21,7 +22,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReservacionComponent,
     DomicilioComponent,
     BreadcrumsComponent,
-    ProductosComponent
+    ProductosComponent,
+    ReservaComponent
   ],
   imports: [
     CommonModule,

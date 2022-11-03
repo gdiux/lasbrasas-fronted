@@ -1,0 +1,101 @@
+<app-breadcrums></app-breadcrums>
+
+<div class="container pb-5 mb-2 mb-md-4 mt-4">
+    <section class="col-lg-8 mx-auto">
+
+        <div class="mb-4 animated fadeIn">
+            <small *ngIf="linkCopy" class="text-success animated fadeIn"> <i class="ci-check"></i> link copiado</small>
+            <div (click)="share()" class="alert alert-dark alert-dismissible fade show pointer" role="alert">
+                <h5 class="mb-1 text-white">Copiar link:</h5>
+                <div class="d-flex align-items-center ">
+                    <p class="text-white fs-sm mb-0 text-break"><strong><i class="ci-link"></i></strong> {{ link }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- INFORMACION DE LA RESERVA -->
+        <div id="pdf">
+            <div *ngIf="reserva" class="card border-0 shadow mb-4">
+                <div class="card-body">
+
+                    <div class="d-flex justify-content-center">
+                        <img class="mx-auto" src="../../../assets/img/logo.webp" alt="las brasas parrilla & sazon" style="max-width: 200px;">
+                    </div>
+
+                    <h3 class="text-center">INFORMACIÓN DE LA RESERVACIÓN: </h3>
+
+                    <h4 *ngIf="!reserva.confirm" class="text-center text-warning"><i class="ci-time"></i> Pendiente por confirmar </h4>
+                    <h4 *ngIf="reserva.confirm" class="text-center text-success"><i class="ci-check"></i> Confirmada </h4>
+
+                    <ul class="list-unstyled mb-0">
+                        <li class="d-flex pb-3 border-bottom">
+                            <i class="ci-add-user fs-lg mt-2 mb-0 text-primary"></i>
+                            <div class="ps-3 w-100">
+                                <span class="fs-ms text-muted">Reserva para:</span>
+                                <h4 class="d-block text-heading mb-0"> {{ reserva.qty || 0 }} </h4>
+
+                            </div>
+                        </li>
+                        <li class="d-flex pt-2 pb-3 border-bottom">
+                            <i class="ci-time fs-lg mt-2 mb-0 text-primary"></i>
+                            <div class="ps-3 w-100">
+                                <span class="fs-ms text-muted">Fecha:</span>
+                                <h4 class="d-block text-heading mb-0"> {{ reserva.fecha || '10/10/2000' | date: 'medium' }} </h4>
+
+                            </div>
+                        </li>
+                        <li class="d-flex pt-2m pb-3 border-bottom">
+                            <i class="ci-user-circle fs-lg mt-2 mb-0 text-primary"></i>
+                            <div class="ps-3 w-100">
+                                <span class="fs-ms text-muted">Datos de la persona:</span>
+                                <h4 class="d-block text-heading mb-0 fs-sm"> {{ reserva.name || '-------'}} </h4>
+                                <h4 class="d-block text-heading mb-0 fs-sm"> {{ reserva.phone || '-------'}} </h4>
+                                <h4 class="d-block text-heading mb-0 fs-sm"> {{ reserva.email || '-------'}} </h4>
+
+                            </div>
+                        </li>
+
+                        <li class="d-flex pt-2m pb-3 border-bottom">
+                            <i class="ci-gift fs-lg mt-2 mb-0 text-primary"></i>
+                            <div class="ps-3 w-100">
+                                <span class="fs-ms text-muted">Decoración:</span>
+                                <h4 *ngIf="!reserva.decoration" class="d-block text-heading mb-0 fs-sm"> Sin decoración </h4>
+                                <h4 *ngIf="reserva.decoration" class="d-block text-heading mb-0 fs-sm"><i class="ci-check text-success"></i> Con decoración </h4>
+
+                                <div *ngIf="reserva.decoration">
+                                    <p class="text-info text-break fs-sm"><strong>Nota:</strong> La decoración tiene un costo adicional, el cual debe ser cancelado antes del dia de la reservación, te contactaremos despues de que termines de crear la reservación</p>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="d-flex pt-2m pb-3 border-bottom">
+                            <i class="ci-message fs-lg mt-2 mb-0 text-primary"></i>
+                            <div class="ps-3 w-100">
+                                <span class="fs-ms text-muted">Comentarios:</span>
+                                <h4 class="d-block text-heading mb-0 fs-sm text-break"> {{ reserva.comment || 'Sin Comentarios' }} </h4>
+
+                            </div>
+                        </li>
+
+                        <li class="d-flex pt-2m">
+                            <i class="ci-globe fs-lg mt-2 mb-0 text-primary"></i>
+                            <div class="ps-3 w-100">
+                                <span class="fs-ms text-muted">link:</span>
+                                <a [href]="link" target="_blank" class="d-block text-heading mb-0 fs-sm tex-break"> {{ link }} </a>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+        <!-- INFORMACION DE LA RESERVA -->
+
+        <!-- PDF -->
+        <div class="d-flex">
+            <button (click)="downloadPDF()" type="button" class="btn btn-danger ms-auto"><i class="ci-download"></i> Descargar PDF</button>
+        </div>
+        <!-- PDF -->
+    </section>
+</div>
