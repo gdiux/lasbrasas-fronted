@@ -99,5 +99,8 @@
             }
         }
     },
-    "defaultProject": "lasbrasasFrontend"
+    "defaultProject": "lasbrasasFrontend",
+    "cli": {
+      "analytics": "b73a6548-9b00-42aa-9eb8-cf5b9b9c46eb"
+    }
 }

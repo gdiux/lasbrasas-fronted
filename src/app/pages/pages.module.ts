@@ -12,6 +12,8 @@ import { BreadcrumsComponent } from '../shared/breadcrums/breadcrums.component';
 import { ProductosComponent } from './productos/productos.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ReservaComponent } from './reserva/reserva.component';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 
 
 
@@ -31,6 +33,9 @@ import { ReservaComponent } from './reserva/reserva.component';
     PipesModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
+    HttpClientJsonpModule,
+    GoogleMapsModule
   ]
 })
 export class PagesModule { }
