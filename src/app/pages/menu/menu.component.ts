@@ -29,9 +29,7 @@ export class MenuComponent implements OnInit {
     this.departmentsService.loadDepartment()
         .subscribe( ({departments}) => {
 
-          console.log(departments);
           this.departamentos = departments;
-          
 
         }, (err) => {
           console.log(err.error.msg);          

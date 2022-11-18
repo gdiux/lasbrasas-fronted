@@ -59,7 +59,7 @@
 
                     <div class="d-flex align-items-center justify-content-between">
                         <div class="product-price"><span class="text-accent"> {{ producto.price | currency }} </span></div>
-                        <button class="btn btn-primary btn-sm" type="button">+<i class="ci-cart fs-base ms-1"></i></button>
+                        <button (click)="addProductCart(producto, 1)" class="btn btn-primary btn-sm" type="button">+<i class="ci-cart fs-base ms-1"></i></button>
                     </div>
 
                 </div>
@@ -97,14 +97,19 @@
                             <form class="mb-grid-gutter">
 
                                 <div class="mb-3 d-flex align-items-center">
-                                    <select class="form-select me-3" style="width: 5rem;">
+                                    <select class="form-select me-3" style="width: 5rem;" #cant>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
                                         <option value="4">4</option>
                                         <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
                                     </select>
-                                    <button class="btn btn-primary btn-shadow d-block w-100" type="submit"><i class="ci-cart fs-lg me-2"></i>Agregar al carrito</button>
+                                    <button (click)="addProductCart(productoSelect, cant.value)" class="btn btn-primary btn-shadow d-block w-100" type="button"><i class="ci-cart fs-lg me-2"></i>Agregar al carrito</button>
                                 </div>
                             </form>
 

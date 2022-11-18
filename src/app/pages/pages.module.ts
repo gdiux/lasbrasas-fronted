@@ -14,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ReservaComponent } from './reserva/reserva.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
+import { CartComponent } from './cart/cart.component';
 
 
 
@@ -25,7 +26,8 @@ import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
     DomicilioComponent,
     BreadcrumsComponent,
     ProductosComponent,
-    ReservaComponent
+    ReservaComponent,
+    CartComponent
   ],
   imports: [
     CommonModule,

@@ -1,5 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
+declare function themeFunction(): any;
+
+// MODELS
+import { Carrito } from 'src/app/models/carrito.model';
+
+// SERVICES
+import { CarritoService } from '../../services/carrito.service';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -8,9 +16,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  public carrito!: Carrito;
 
-  ngOnInit(): void {
+  constructor(  private carritoService: CarritoService) { 
+
+    this.carrito = carritoService.carrito;
+
   }
 
+  ngOnInit(): void { 
+
+    themeFunction();
+
+  }
+
+  /** ================================================================
+   *   ELIMINAR PRODUCTOS AL CARRITO
+  ==================================================================== */
+  deleteProductCart(i: number){
+    this.carritoService.deleteProduct(i);
+  }
+
+  // FIN DE LA CLASE
 }

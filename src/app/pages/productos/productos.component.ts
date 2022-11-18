@@ -8,6 +8,8 @@ import { Product } from '../../models/product.model';
 import { ProductosService } from '../../services/productos.service';
 import { DepartmentsService } from '../../services/departments.service';
 import { Department } from '../../models/department.model copy';
+import { CarritoService } from '../../services/carrito.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-productos',
@@ -21,7 +23,8 @@ export class ProductosComponent implements OnInit {
   constructor(  private activatedRoute: ActivatedRoute,
                 private productosService: ProductosService,
                 private router: Router,
-                private departmentsService: DepartmentsService) { }
+                private departmentsService: DepartmentsService,
+                private carritoService: CarritoService) { }
 
   ngOnInit(): void {
 
@@ -47,10 +50,8 @@ export class ProductosComponent implements OnInit {
     this.departmentsService.loadDepartment()
         .subscribe( ({departments}) => {
 
-          console.log(departments);
           this.departamentos = departments;
           
-
         }, (err) => {
           console.log(err.error.msg);          
         });
@@ -87,6 +88,30 @@ export class ProductosComponent implements OnInit {
     this.productoSelect = producto;
 
   }
+
+  /** ================================================================
+   *   AGREGAR PRODUCTOS AL CARRITO
+  ==================================================================== */
+  addProductCart(product: Product, qty: any){
+
+    if (qty === 0 ) {
+      return;
+    }
+
+    qty = Number(qty);
+
+    this.carritoService.updateCarrito(product, qty);
+
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Se agrego el producto exitosamente!',
+      showConfirmButton: false,
+      timer: 1500
+    })
+
+  }
+
 
   // FIN DE LA CLASE
 }

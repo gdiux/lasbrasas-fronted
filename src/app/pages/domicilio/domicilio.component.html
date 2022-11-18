@@ -58,8 +58,9 @@
 
                 <div class="form-floating mb-3">
                     <select class="form-select" id="fl-select" #selectCity>
+                        <option value="Bucaramanga">Bucaramanga</option>
+                        <option value="Floridablanca">Floridablanca</option>
                       <option value="Girón" selected>Girón</option>
-                      <option value="Bucaramanga">Bucaramanga</option>
                     </select>
                     <label for="fl-select">Ciudad</label>
                 </div>
@@ -115,11 +116,18 @@
                                 <p class="d-block text-heading fs-sm mb-0"> {{ ubicacion.nombres }} </p>
                             </div>
                         </li>
-                        <li class="d-flex pt-2m">
+                        <li class="d-flex pt-2 pb-2 border-bottom">
                             <i class="ci-phone fs-lg mt-2 mb-0 text-primary"></i>
                             <div class="ps-3">
                                 <span class="fs-ms text-muted">Telefono:</span>
                                 <p class="d-block text-heading fs-sm mb-0"> {{ ubicacion.telefono }} </p>
+                            </div>
+                        </li>
+                        <li class="d-flex pt-2m">
+                            <i class="ci-bookmark fs-lg mt-2 mb-0 text-primary"></i>
+                            <div class="ps-3">
+                                <span class="fs-ms text-muted">Referencoa:</span>
+                                <p class="d-block text-heading fs-sm mb-0"> {{ ubicacion.referencia }} </p>
                             </div>
                         </li>
                     </ul>
@@ -188,6 +196,12 @@
                         <div class="form-floating mb-3">
                             <input formControlName="telefono" class="form-control" type="text" id="fl-telfono" placeholder="Telefono">
                             <label for="fl-telfono">Telefono</label>
+                        </div>
+
+                        <small class="text-danger animated fadeIn" *ngIf="validate('referencia')">El punto de referencia es obligatorio</small>
+                        <div class="form-floating mb-3">
+                            <input formControlName="referencia" class="form-control" type="text" id="fl-referencia" placeholder="Referencia">
+                            <label for="fl-referencia">Referencia: Nro de piso, Casa, Edificio</label>
                         </div>
 
                         <div class="mb-3">

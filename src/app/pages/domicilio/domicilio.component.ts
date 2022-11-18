@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
@@ -6,21 +8,23 @@ import { catchError, map } from 'rxjs/operators';
 
 import {MapGeocoder} from '@angular/google-maps';
 
+// MODELS
+import { Ubicaciones } from 'src/app/models/ubicaciones.model';
+
 // SERVICES
 import { GpsService } from 'src/app/services/gps.service';
-import Swal from 'sweetalert2';
-import { FormBuilder, Validators } from '@angular/forms';
 
 // INTERFACES
-interface _ubicaciones{
-  name: string,
-  nombres: string,
-  telefono: string,
-  localizacion: {
-    lat: number,
-    lng: number
-  }
-};
+// interface _ubicaciones{
+//   name: string,
+//   nombres: string,
+//   telefono: string,
+//   referencia: string,
+//   localizacion: {
+//     lat: number,
+//     lng: number
+//   }
+// };
 
 
 @Component({
@@ -115,13 +119,14 @@ export class DomicilioComponent implements OnInit {
   /** =====================================================================
    *  GUARDAR UBICACION
   =========================================================================*/
-  public ubicaciones: _ubicaciones[] = [];
+  public ubicaciones: Ubicaciones[] = [];
   public ubiFormSubmitted: boolean = false;
   public ubiForm = this.fb.group({
 
     name: ['', [Validators.required, Validators.minLength(3)]],
     nombres: ['', [Validators.required, Validators.minLength(3)]],
     telefono: ['', [Validators.required, Validators.minLength(3)]],
+    referencia: ['', [Validators.required, Validators.minLength(3)]],
     localizacion: '',
     term: [false, [Validators.requiredTrue]],
 

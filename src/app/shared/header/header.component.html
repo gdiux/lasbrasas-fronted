@@ -6,9 +6,64 @@
         <a class="navbar-brand d-sm-none me-2 order-lg-1" routerLink="/"><img src="../../../assets/img/logo.webp" width="74" alt="Cartzilla"></a>
 
         <div class="navbar-toolbar d-flex align-items-center order-lg-3">
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
+            <div class="navbar-tool dropdown ms-3">
+
+                <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" routerLink="/carrito">
+                    <span class="navbar-tool-label" *ngIf="carrito.items > 0" > {{ carrito.items || 0 }} </span>
+                    <i class="navbar-tool-icon ci-cart"></i>
+                </a>
+                <!-- Cart dropdown-->
+                <div class="dropdown-menu dropdown-menu-end">
+
+                    <div class="widget widget-cart px-3 pt-2 pb-3" style="width: 20rem;">
+                        <div style="max-height: 15rem;" data-simplebar data-simplebar-auto-hide="false">
+
+                            <div class="mx-auto pb-2 border-bottom" *ngIf="carrito.items === 0 || carrito.products.length === 0">
+                                <h4 class="mb-0 text-muted text-center text-break"> No hay productos en el carrito </h4>
+                            </div>
+
+                            <div class="widget-cart-item pb-2 border-bottom" *ngFor="let producto of carrito.products; let i = index">
+                                <button (click)="deleteProductCart(i)" class="btn-close text-danger" type="button" aria-label="Remove"><span aria-hidden="true">&times;</span></button>
+                                <div class="d-flex align-items-center">
+
+                                    <a class="d-block">
+                                        <img [src]="producto.product.img! | imagen:'products'" width="64" alt="Pizza">
+                                    </a>
+
+                                    <div class="ps-2">
+                                        <h6 class="widget-product-title">
+                                            <a> {{ producto.product.name }} </a>
+                                        </h6>
+                                        <div class="widget-product-meta">
+                                            <span class="text-accent me-2"> {{ producto.product.price | currency: '$' : 'symbol' : '1.0-0' }} </span>
+                                            <span class="text-muted">x {{ producto.qty}}</span>
+                                            <span class="text-accent"> = {{ producto.monto | currency: '$' : 'symbol' : '1.0-0' }}</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="d-flex flex-wrap justify-content-between align-items-center py-3">
+                            <div class="fs-sm me-2 py-2">
+                                <span class="text-muted">Total:</span>
+                                <span class="text-accent fs-base ms-1"> {{ carrito.total | currency }} </span>
+                            </div>
+
+                            <a class="btn btn-outline-secondary btn-sm" routerLink="/carrito">Ir al carrito<i class="ci-arrow-right ms-1 me-n1"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <div class="collapse navbar-collapse me-auto order-lg-2" id="navbarCollapse">
