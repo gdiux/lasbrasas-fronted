@@ -25,8 +25,16 @@
                         <!-- Items in cart-->
                         <div class="col-lg-8 col-md-7 pt-sm-2">
 
+                            <div class="d-flex flex-column justify-content-center" *ngIf="carrito.products.length === 0">
+
+                                <h3 class="text-muted mb-2 text-center">No tienes ningun producto agregado en el carrito de compras</h3>
+                                <a routerLink="/menu" class="text-center mx-auto"> <i class="ci-reply"></i> Volver al menu</a>
+                            </div>
+
                             <!-- Items-->
                             <div *ngFor="let producto of carrito.products; let i = index" class="d-sm-flex justify-content-between align-items-center mt-3 mb-4 pb-3 border-bottom">
+
+
                                 <div class="d-block d-sm-flex align-items-center text-center text-sm-start">
                                     <a class="d-inline-block flex-shrink-0 mx-auto me-sm-4">
                                         <img [src]="producto.product.img! | imagen:'products'" width="120" alt="Pizza">
@@ -96,7 +104,7 @@
 
                     </div>
 
-                    <div class="row pb-4 pt-3">
+                    <div class="row pb-4 pt-3" *ngIf="ubicacion">
                         <div class="col-sm-6 mb-4">
                             <label class="form-label" for="fd-name">Nombre de la ubicación<sup class="text-danger ms-1">*</sup></label>
                             <input readonly [value]="ubicacion.name" class="form-control" type="text" id="fd-name">
@@ -107,9 +115,9 @@
                         </div>
                     </div>
 
-                    <h2 class="h5 pb-3">Información del domicilio</h2>
+                    <h2 class="h5 pb-3" *ngIf="ubicacion">Información del domicilio</h2>
 
-                    <div class="row mb-4">
+                    <div class="row mb-4" *ngIf="ubicacion">
 
                         <div class="col-sm-6 mb-4">
                             <label class="form-label" for="fd-phone">Telefono<sup class="text-danger ms-1">*</sup></label>
@@ -123,7 +131,7 @@
 
                     </div>
 
-                    <div class="col-12 mb-4">
+                    <div class="col-12 mb-4" *ngIf="ubicacion">
 
                         <google-map height="300px" width="100%" [center]="center" [zoom]="zoom">
 
