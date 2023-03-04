@@ -13,7 +13,7 @@ export class WompiService {
   ================================================================ */
   getTransaccionId(id:string){
 
-    return this.http.get(`https://sandbox.wompi.co/v1/transactions/${id}`)
+    return this.http.get(`https://production.wompi.co/v1/transactions/${id}`)
 
   }
 

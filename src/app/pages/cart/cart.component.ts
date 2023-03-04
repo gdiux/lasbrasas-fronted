@@ -157,7 +157,7 @@ export class CartComponent implements OnInit {
 
           const url = environment.local_url;
 
-          window.location.href = `https://checkout.wompi.co/p/?public-key=pub_test_rGwfwSaCYbcjlKOyeseuOCZFvdydn1no&currency=COP&amount-in-cents=${String(this.carrito.total)}00&reference=${domicilio.doid}&redirect-url=${url}/confirmar/domicilio/${domicilio.doid}`;
+          window.location.href = `https://checkout.wompi.co/p/?public-key=pub_prod_4uuH6FXmHJza0PCmxOq0T1a0luJlJRSU&currency=COP&amount-in-cents=${String(this.carrito.total)}00&reference=${domicilio.doid}&redirect-url=${url}/confirmar/domicilio/${domicilio.doid}`;
 
           // window.open(`https://checkout.wompi.co/p/?public-key=pub_prod_6mVGKjbJuRpL2SLeN9e8D41Z12sqAoGI&currency=COP&amount-in-cents=${String(this.total)}00&reference=${this.uuid.getDashFreeUUID()}&redirect-url=${this.url}/validar/${this.uuid.getDashFreeUUID()}`, "_blank");
 
