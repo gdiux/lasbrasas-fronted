@@ -1,4 +1,4 @@
-interface _localizacion {
+export interface _localizacion {
     lat: number,
     lng: number
 }

@@ -34,7 +34,6 @@
                             <!-- Items-->
                             <div *ngFor="let producto of carrito.products; let i = index" class="d-sm-flex justify-content-between align-items-center mt-3 mb-4 pb-3 border-bottom">
 
-
                                 <div class="d-block d-sm-flex align-items-center text-center text-sm-start">
                                     <a class="d-inline-block flex-shrink-0 mx-auto me-sm-4">
                                         <img [src]="producto.product.img! | imagen:'products'" width="120" alt="Pizza">
@@ -82,7 +81,7 @@
             ======================================================================= -->
             <div class="tab-pane fade" id="pagoTab" role="tabpanel">
 
-                <form class="needs-validation px-3 px-sm-4 px-xl-5 pt-sm-1 pb-4 pb-sm-5" novalidate>
+                <form class="needs-validation px-3 px-sm-4 px-xl-5 pt-sm-1 pb-4 pb-sm-5" novalidate [formGroup]="createForm" (ngSubmit)="crearDomicilio()">
 
                     <div class="col-12 mb-4">
                         <label class="form-label" for="fd-time">Elegir ubicación<sup class="text-danger ms-1">*</sup></label>
@@ -107,11 +106,13 @@
                     <div class="row pb-4 pt-3" *ngIf="ubicacion">
                         <div class="col-sm-6 mb-4">
                             <label class="form-label" for="fd-name">Nombre de la ubicación<sup class="text-danger ms-1">*</sup></label>
-                            <input readonly [value]="ubicacion.name" class="form-control" type="text" id="fd-name">
+                            <input formControlName="name" readonly [value]="ubicacion.name" class="form-control" type="text" id="fd-name">
+                            <p *ngIf="validate('name')" class="text-danger mb-0"> <small> Campo obligatorio, debes de agregar primero tu ubicación para continuar </small> </p>
                         </div>
                         <div class="col-sm-6 mb-4">
                             <label class="form-label" for="fd-recibe">Quien recibe<sup class="text-danger ms-1">*</sup></label>
-                            <input readonly [value]="ubicacion.nombres" class="form-control" type="text" id="fd-recibe">
+                            <input formControlName="nombres" readonly [value]="ubicacion.nombres" class="form-control" type="text" id="fd-recibe">
+                            <p *ngIf="validate('nombres')" class="text-danger mb-0"> <small> Campo obligatorio, debes de agregar primero tu ubicación para continuar </small> </p>
                         </div>
                     </div>
 
@@ -121,12 +122,14 @@
 
                         <div class="col-sm-6 mb-4">
                             <label class="form-label" for="fd-phone">Telefono<sup class="text-danger ms-1">*</sup></label>
-                            <input readonly [value]="ubicacion.telefono" class="form-control" type="text" id="fd-phone">
+                            <input formControlName="telefono" readonly [value]="ubicacion.telefono" class="form-control" type="text" id="fd-phone">
+                            <p *ngIf="validate('telefono')" class="text-danger mb-0"> <small> Campo obligatorio, debes de agregar primero tu ubicación para continuar </small> </p>
                         </div>
 
                         <div class="col-sm-6 mb-4">
                             <label class="form-label" for="fd-address">Punto de referencia<sup class="text-danger ms-1">*</sup></label>
-                            <input readonly [value]="ubicacion.referencia" class="form-control" type="text" id="fd-address">
+                            <input formControlName="referencia" readonly [value]="ubicacion.referencia" class="form-control" type="text" id="fd-address">
+                            <p *ngIf="validate('referencia')" class="text-danger mb-0"> <small> Campo obligatorio, debes de agregar primero tu ubicación para continuar </small> </p>
                         </div>
 
                     </div>
@@ -144,7 +147,7 @@
 
                     <div class="col-12 mb-4">
                         <label class="form-label mb-3" for="fd-comments"><span class="badge bg-info fs-xs me-2">Nota:</span>Agrega un comentario a tu orden</label>
-                        <textarea class="form-control" rows="5" id="fd-comments" placeholder="Ejemplo: Sin cebolla, poca salsa"></textarea>
+                        <textarea formControlName="nota" class="form-control" rows="5" id="fd-comments" placeholder="Ejemplo: Sin cebolla, poca salsa"></textarea>
                     </div>
 
                     <div class="row">
@@ -153,8 +156,13 @@
                             <div class="form-check form-check-inline pb-4">
                                 <i class="ci-check text-success"></i>
                                 <label class="form-check-label" for="online"> Paga con:&nbsp;&nbsp;&nbsp;<img class="d-inline-block align-middle" src="../../../assets/img/cards.png" style="width: 187px;" alt="Cerdit Cards"></label>
+                                <p class="mb-0 text-muted"><i class="ci-check text-success"></i> Nequi</p>
+                                <p class="mb-0 text-muted"><i class="ci-check text-success"></i> Bancolombia</p>
+                                <p class="mb-0 text-muted"><i class="ci-check text-success"></i> PSE</p>
                             </div>
-                            <button class="btn btn-primary d-block w-100 mt-3" type="submit">Completar pedido</button>
+
+                            <button class="btn btn-primary d-block w-100 mt-3" type="submit">Pagar</button>
+
                         </div>
                         <div class="col-sm-6">
                             <div class="d-fle flex-column h-100 rounded-3 bg-secondary px-3 px-sm-4 py-4">
@@ -164,6 +172,7 @@
                             </div>
                         </div>
                     </div>
+
                 </form>
 
             </div>
@@ -173,7 +182,5 @@
         </div>
 
     </div>
-
-
 
 </section>

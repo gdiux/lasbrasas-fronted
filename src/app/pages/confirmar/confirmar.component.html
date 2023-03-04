@@ -1,0 +1,81 @@
+<section class="d-flex align-items-center min-vh-100 py-5 bg-secondary">
+    <div class="container d-flex justify-content-center text-center">
+
+        <div class="row" *ngIf="domicilio">
+
+            <!-- Items in cart-->
+            <div class="card col-lg-8 col-md-7 pt-sm-2">
+
+                <div class="d-flex flex-column justify-content-center" *ngIf="domicilio.carrito.length === 0">
+
+                    <h3 class="text-muted mb-2 text-center">No tienes ningun producto agregado en el carrito de compras</h3>
+                    <a routerLink="/menu" class="text-center mx-auto"> <i class="ci-reply"></i> Volver al menu</a>
+                </div>
+
+                <!-- Items-->
+                <div *ngFor="let producto of domicilio.carrito; let i = index" class="d-sm-flex justify-content-between align-items-center mt-3 mb-4 pb-3 border-bottom">
+
+                    <div class="d-block d-sm-flex align-items-center text-center text-sm-start">
+                        <a class="d-inline-block flex-shrink-0 mx-auto me-sm-4">
+                            <img [src]="producto.product.img! | imagen:'products'" width="120" alt="Pizza">
+                        </a>
+                        <div class="pt-2">
+                            <h3 class="product-title fs-base mb-2">
+                                <a class="pointer"> {{ producto.product.name }} </a>
+                            </h3>
+                            <div class="fs-sm text-break"><span class="text-muted me-2">Descripción:</span> {{ producto.product.description }} </div>
+                            <div class="fs-md pt-2">Precio: {{ producto.product.price | currency }} </div>
+                            <div class="fs-lg text-accent pt-2">Monto: {{ producto.monto | currency }} </div>
+                        </div>
+                    </div>
+                    <div class="pt-2 pt-sm-0 ps-sm-3 mx-auto mx-sm-0 text-center text-sm-start" style="max-width: 9rem;">
+                        <label class="form-label" for="quantity{{i}}">Cantidad</label>
+                        <input readonly class="form-control" type="number" id="quantity{{i}}" [value]="producto.qty" min="1" #qtyNew>
+                    </div>
+                </div>
+                <!-- Items-->
+
+            </div>
+
+            <!-- Sidebar-->
+            <div class="col-lg-4 col-md-5 pt-0 pt-sm-0" *ngIf="transaction">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title display-1 text-success" *ngIf="transaction.status === 'APPROVED'"> <i class="ci-check"></i> </h4>
+                        <h4 class="card-title display-1 text-danger" *ngIf="transaction.status !== 'APPROVED'"> <i class="ci-x"></i> </h4>
+                        <p class="card-text fs-sm text-muted">
+                            <span *ngIf="transaction.status === 'APPROVED'">Su transaccion se ha completado exitosamente</span>
+                            <span *ngIf="transaction.status !== 'APPROVED'">Ha ocurrido un error con su transaccion</span>
+                            <br>
+                            <small>ID: {{transaction.id}}</small>
+                        </p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <h4 class="mb-0 text-dark"> {{ (transaction.amount_in_cents/100) | currency }} </h4>
+                        </li>
+                        <li class="list-group-item">{{transaction.created_at | date: 'medium'}}</li>
+                        <li class="list-group-item">{{transaction.payment_method_type }}</li>
+                        <li class="list-group-item">{{transaction.reference }}</li>
+                    </ul>
+                    <div class="card-body">
+
+                        <p class="mb-2 text-center text-muted"> Confirmar por Whatsapp:</p>
+
+                        <a *ngIf="transaction.status === 'APPROVED'" [href]="'https://api.whatsapp.com/send/?phone=+573187549756&text=Hola,+como+estas.+he+realizado+un+pago+para+un+domicilio+de+$ '+(transaction.amount_in_cents/100)+',+ +ID del domicilio: '+transaction.reference"
+                            target="_blank" class="btn btn-sm btn-success">
+                            <i class="btn-scroll-top-icon fi-whatsapp"></i> Whatsapp
+                        </a>
+                        <a *ngIf="transaction.status !== 'APPROVED'" [href]="'https://api.whatsapp.com/send/?phone=+573187549756&text=Hola,+como+estas.+he+realizado+un+pago+para+un+domicilio+de+'+(transaction.amount_in_cents/100)+'+sale+un+error.+ +ID del domicilio: '+transaction.reference"
+                            target="_blank" class="btn btn-sm btn-success">
+                            <i class="btn-scroll-top-icon fi-whatsapp"></i> Whatsapp
+                        </a>
+
+                        <!-- <p class="mt-4 mb-0 text-muted"><span class="fw-bold">Nota:</span> <small class="text-center"> La confirmación tiene un lapso de 24 horas </small> </p> -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

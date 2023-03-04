@@ -9,10 +9,12 @@ import { ReservacionComponent } from './reservacion/reservacion.component';
 import { ProductosComponent } from './productos/productos.component';
 import { ReservaComponent } from './reserva/reserva.component';
 import { CartComponent } from './cart/cart.component';
+import { ConfirmarComponent } from './confirmar/confirmar.component';
 
 const routes: Routes = [
     
     { path: 'carrito', component: CartComponent, data:{ titulo: 'Mi Carrito' } },
+    { path: 'confirmar/:type/:id', component: ConfirmarComponent, data:{ titulo: 'Mi Carrito' } },
     { path: 'domicilio', component: DomicilioComponent, data:{ titulo: 'Domicilio' } },
     { path: 'inicio', component: HomeComponent, data:{ titulo: 'Inicio' } },
     { path: 'menu', component: MenuComponent, data:{ titulo: 'Menu' } }, 

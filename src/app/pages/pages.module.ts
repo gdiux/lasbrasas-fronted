@@ -15,6 +15,7 @@ import { ReservaComponent } from './reserva/reserva.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 import { CartComponent } from './cart/cart.component';
+import { ConfirmarComponent } from './confirmar/confirmar.component';
 
 
 
@@ -27,7 +28,8 @@ import { CartComponent } from './cart/cart.component';
     BreadcrumsComponent,
     ProductosComponent,
     ReservaComponent,
-    CartComponent
+    CartComponent,
+    ConfirmarComponent
   ],
   imports: [
     CommonModule,
